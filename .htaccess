@@ -1,0 +1,43 @@
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</IfModule>
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+
+# CSS and JavaScript
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+
+ExpiresByType application/x-font-ttf "access plus 1 month"
+ExpiresByType font/opentype "access plus 1 month"
+ExpiresByType application/x-font-woff "access plus 1 month"
+ExpiresByType image/svg+xml "access plus 1 month"
+ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+
+ExpiresDefault "access 2 days"
+
+<IfModule mod_headers.c>
+    Header append Cache-Control "public"
+</IfModule>
+
+</IfModule>
+## EXPIRES CACHING ##
+
+## Error Handling ##
+ErrorDocument 404 /404.html
+
+## Directory listing ##
+IndexIgnore *
+
+Options -Indexes
+## Indexing options off
+
