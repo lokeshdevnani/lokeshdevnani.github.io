@@ -92,7 +92,15 @@ gulp.task("copyOther", function() {
 // Copying fonts
 gulp.task("fonts", function() {
 	return gulp.src("app/fonts/**/*").pipe(gulp.dest("dist/fonts"))
+}
+
+// Copying other static files
+gulp.task("copyStatic", function() {
+    gulp.src("resume.pdf").pipe(gulp.dest("dest/resume.pdf"))
+    return gulp.src("CNAME").pipe(gulp.dest("dest/CNAME"))
 })
+
+)
 
 // Cleaning
 gulp.task("clean", function() {
@@ -109,7 +117,7 @@ gulp.task("clean:dist", function() {
 // ---------------
 
 gulp.task("default", function(callback) {
-	runSequence(["sass", "browserSync", "watch"], callback)
+	runSequence(["sass", "browserSync", "watch", "staticCopy"], callback)
 })
 
 gulp.task("build", function(callback) {
